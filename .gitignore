@@ -1,2 +1,5 @@
 # IDEs
 /.idea/
+
+# temp files
+/temp/
