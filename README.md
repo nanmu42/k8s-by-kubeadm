@@ -197,12 +197,15 @@ worker.localdomain   Ready    <none>   2m   v1.14.0
 
 [官方文档](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#optional-controlling-your-cluster-from-machines-other-than-the-master)是下一个不错的起点，祝你好运！
 
-# 参考文献
+# 参考文献/致谢
 
 * https://kubernetes.io/docs/setup/independent/install-kubeadm/#check-required-ports
 * https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
 * https://serverfault.com/questions/684771/best-way-to-disable-swap-in-linux
 * https://github.com/coreos/flannel/blob/master/Documentation/backends.md#recommended-backends
+* https://blog.csdn.net/aixiaoyang168/article/details/78411511
+* https://zhuanlan.zhihu.com/p/46341911
+* https://kubernetes.feisky.xyz/ （很棒的学习资源）
 
 # License
 
