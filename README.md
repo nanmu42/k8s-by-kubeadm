@@ -133,7 +133,7 @@ echo "source <(kubectl completion bash)">> ~/.bashrc
 echo "source <(kubeadm completion bash)">> ~/.bashrc
 ```
 
-## 启动主节点
+## 启动主节点，启动集群
 
 选定一个实例作为主节点，运行下列命令（`script/03_boot_master.sh`）：
 
@@ -170,7 +170,7 @@ mkdir -p $HOME/.kube
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-## 启动从节点
+## 启动从节点，加入集群
 
 在要作为从节点加入集群的实例上，运行上个步骤kubeadm的输出的加入命令：
 
