@@ -149,9 +149,45 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
 ```
 
+如果一切无误，kubeadm最后会有形如以下的输出：
+
+```
+kubeadm join 192.168.100.200:6443 --token some_token_here \
+    --discovery-token-ca-cert-hash sha256:some_hash_here
+```
+
+记录上述输出，供从节点启动使用。
+
+以一般用户运行下列命令，配置主节点所在实例的kubectl：
+
+```bash
+mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
 ## 启动从节点
 
+在要作为从节点加入集群的实例上，运行上个步骤kubeadm的输出的加入命令：
 
+```bash
+kubeadm join 192.168.100.200:6443 --token some_token_here \
+    --discovery-token-ca-cert-hash sha256:some_hash_here
+```
+
+## 检查节点状况
+
+```bash
+$ kubectl get node
+```
+
+```
+NAME                 STATUS   ROLES    AGE     VERSION
+master.localdomain   Ready    master   2m   v1.14.0
+worker.localdomain   Ready    <none>   2m   v1.14.0
+```
+
+如果列表中几个节点状态都为`Ready`，那么恭喜，你成功完成了本教程，部署了一个单主节点的k8s集群！
 
 # 参考文献
 
