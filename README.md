@@ -4,6 +4,8 @@
 
 欢迎各种形式的建议、勘误及贡献。
 
+Happy Hacking!
+
 # 开始搭建
 
 ## 先决条件
@@ -23,6 +25,8 @@ sudo cat /sys/class/dmi/id/product_uuid
 ```
 
 ### hostname
+
+k8s会使用实例的hostname作为节点名称，因此有必要为每个实例取一个描述性较好的名称。
 
 实例的`hostname`需要满足[DNS-1123](https://tools.ietf.org/html/rfc1123)规范：
 
@@ -188,6 +192,10 @@ worker.localdomain   Ready    <none>   2m   v1.14.0
 ```
 
 如果列表中几个节点状态都为`Ready`，那么恭喜，你成功完成了本教程，部署了一个单主节点的k8s集群！
+
+## 下一步？
+
+[官方文档](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#optional-controlling-your-cluster-from-machines-other-than-the-master)是下一个不错的起点，祝你好运！
 
 # 参考文献
 
