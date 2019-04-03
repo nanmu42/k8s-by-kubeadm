@@ -197,6 +197,10 @@ worker.localdomain   Ready    <none>   2m   v1.14.0
 
 如果列表中几个节点状态都为`Ready`，那么恭喜，你成功完成了本教程，部署了一个单主节点的k8s集群！
 
+## 本教程的可执行脚本
+
+可执行脚本在本仓库的`script`文件夹中，使用前请阅读`script/README.md`。
+
 ## 下一步？
 
 [官方文档](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#optional-controlling-your-cluster-from-machines-other-than-the-master)是下一个不错的起点，祝你好运！
