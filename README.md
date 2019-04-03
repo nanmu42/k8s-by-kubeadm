@@ -207,6 +207,7 @@ worker.localdomain   Ready    <none>   2m   v1.14.0
 
 # 参考文献/致谢
 
+* [阿里巴巴开源镜像站](https://opsx.alibaba.com/mirror)
 * https://kubernetes.io/docs/setup/independent/install-kubeadm/#check-required-ports
 * https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
 * https://serverfault.com/questions/684771/best-way-to-disable-swap-in-linux
