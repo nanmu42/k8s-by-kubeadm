@@ -12,7 +12,7 @@ Happy Hacking!
 
 在使用脚本之前先通读本`README.md`，避免翻车。
 
-如果遇到问题，可以先查阅[常见问题和解决方案]((https://github.com/nanmu42/k8s-by-kubeadm/issues?utf8=%E2%9C%93&q=label%3AQA+))。
+如果遇到问题，可以先查阅[常见问题和解决方案](https://github.com/nanmu42/k8s-by-kubeadm/issues?utf8=%E2%9C%93&q=label%3AQA+)。
 
 ## 先决条件
 
