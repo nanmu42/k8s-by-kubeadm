@@ -8,6 +8,12 @@ Happy Hacking!
 
 # 开始搭建
 
+本教程使用的大部分bash脚本可以在`script`文件夹中找到。
+
+在使用脚本之前先通读本`README.md`，避免翻车。
+
+如果遇到问题，可以先查阅[常见问题和解决方案]((https://github.com/nanmu42/k8s-by-kubeadm/issues?utf8=%E2%9C%93&q=label%3AQA+))。
+
 ## 先决条件
 
 ### 实例
@@ -148,13 +154,6 @@ kubeadm init --pod-network-cidr=10.244.0.0/16 --image-repository registry.cn-han
 # 等待片刻，让系统准备好
 echo 'sleep a while for k8s to get ready...'
 sleep 15
-
-# （可选）让主节点上也能运行pod
-# 这会提高资源利用率，代价是会降低主节点的安全性
-kubectl taint nodes --all node-role.kubernetes.io/master-
-
-# 部署 flannel 作为 CNI
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
 ```
 
 如果一切无误，kubeadm最后会有形如以下的输出：
@@ -166,12 +165,32 @@ kubeadm join 192.168.100.200:6443 --token some_token_here \
 
 记录上述输出，供从节点启动使用。
 
-以一般用户运行下列命令，配置主节点所在实例的kubectl：
+以一般用户运行下列命令，配置主节点所在实例的kubectl（`script/04_config_kubectl.sh`）：
 
 ```bash
 mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+## 配置CNI
+
+我们使用flannel作为CNI（`script/05_deploy_flannel.sh`）：
+
+```bash
+# 部署 flannel 作为 CNI
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
+```
+
+## （可选）让主节点也可以运行Pod
+
+Kubernetes默认不在主节点上运行Pod，这里可以让调度器不再遵从这个策略。
+
+这会提高资源利用率，代价是会降低主节点的安全性。
+
+```bash
+# （可选）让主节点上也能运行pod
+kubectl taint nodes --all node-role.kubernetes.io/master-
 ```
 
 ## 启动从节点，加入集群
